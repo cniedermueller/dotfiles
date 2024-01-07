@@ -27,6 +27,8 @@ set $term footclient
 # on the original workspace that the command was run on.
 set $menu tofi-drun | xargs swaymsg exec --
 set $passmenu passmenu | xargs swaymsg exec --
+set $mountmenu mounter -m
+set $unmountmenu mounter -u
 
 set $browser firefox
 
@@ -87,6 +89,8 @@ input * {
     # Start your launcher
     bindsym $mod+d exec $menu
     bindsym $mod+p exec $passmenu
+    bindsym $mod+m exec $mountmenu
+    bindsym $mod+Shift+m exec $unmountmenu
 
     bindsym $mod+w exec $browser
 
