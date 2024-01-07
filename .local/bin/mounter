@@ -1,0 +1,53 @@
+#!/bin/sh
+
+usage()
+{
+    echo "Usage: $0 [-m|-u]"
+    exit -1
+}
+
+unset action
+while getopts 'muh' c
+do
+    case $c in
+        m) action='mount' ;;
+        u) action='unmount' ;;
+        h) usage ;;
+    esac
+done
+
+[ -z "$action" ] && usage
+
+#needed if values from lsblk are not set so awk stays happy
+function escape_spaces() { sed "s/ /:/g"; }
+function format() { awk -F ":" '{ printf "%s %s (%s)", $1, $2, $3; if ($7 != "") printf " <%s>", $7; printf "\n"}'; }
+
+set -e
+
+blkdevices=$(lsblk -o name,size,type,fstype,mountpoint,label --raw --noheading --paths)
+normalpartitions=$(echo "$blkdevices" | grep -v "crypto_LUKS\|LVM2_member" | grep 'part\|rom\|crypt' | sed "s/^/💾 /" | escape_spaces)
+allpartitions=$(echo "$normalpartitions")
+
+if [ "$action" == "mount" ]; then
+    unmountedpartitions=$(echo "$allpartitions" | awk -F ":" '$6==""' | format)
+    chosen=$(echo "$unmountedpartitions" | bemenu)
+    blkdevice=$(echo "$chosen" | awk '{print $2}')
+
+    udiskctlresponse=$(udisksctl mount -b "$blkdevice")
+    $(notify-send "Mount drive" "$udiskctlresponse")
+fi
+
+if [ "$action" == "unmount" ]; then
+    mountedpartitions=$(echo "$allpartitions" | awk -F ":" '$6~/^\/run\/media\//' | format)
+
+    if [ -z "$mountedpartitions" ]; then
+        notify-send "Unmount drive" "No drives available to be unmounted."
+        exit -1
+    fi
+
+    chosen=$(echo "$mountedpartitions" | bemenu)
+    blkdevice=$(echo "$chosen" | awk '{print $2}')
+
+    udiskctlresponse=$(udisksctl unmount -b "$blkdevice")
+    $(notify-send "Unmount drive" "$udiskctlresponse")
+fi
