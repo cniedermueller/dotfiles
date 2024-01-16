@@ -22,8 +22,9 @@ vim.keymap.set('n', '<leader>ds', function()
 end)
 
 vim.keymap.set('n', '<leader>dc', function()
-    if vim.fn.filereadable('.vscode/launch.json') then
-        require('dap.ext.vscode').load_launchjs(nil,
+    if vim.fn.filereadable('launch.json') then
+        require('dap.ext.vscode').load_launchjs(
+            'launch.json',
             {
                 codelldb = { 'rust' },
                 coreclr = { 'cs' }

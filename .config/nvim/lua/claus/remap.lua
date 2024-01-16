@@ -1,7 +1,7 @@
 vim.g.mapleader = ' '
 vim.keymap.set('n', '<leader>w', vim.cmd.write)
 vim.keymap.set('n', '<leader>q', vim.cmd.quit)
-vim.keymap.set('n', '<leader>b', vim.cmd.bprevious)
+vim.keymap.set('n', '<BS>', vim.cmd.bprevious)
 vim.keymap.set('n', '<leader>n', vim.cmd.bnext)
 vim.keymap.set('n', '<leader>o', vim.cmd.only)
 
