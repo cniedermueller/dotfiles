@@ -29,6 +29,7 @@ set $menu tofi-drun | xargs swaymsg exec --
 set $passmenu passmenu | xargs swaymsg exec --
 set $mountmenu mounter -m
 set $unmountmenu mounter -u
+set $work work
 
 set $browser firefox
 
@@ -91,6 +92,7 @@ input * {
     bindsym $mod+p exec $passmenu
     bindsym $mod+m exec $mountmenu
     bindsym $mod+Shift+m exec $unmountmenu
+    bindsym $mod+h+o exec $work
 
     bindsym $mod+w exec $browser
 
