@@ -11,6 +11,6 @@ vim.opt.incsearch = true
 
 vim.opt.scrolloff = 8
 
-vim.cmd[[colorscheme tokyonight]]
+vim.cmd [[colorscheme tokyonight]]
 
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
