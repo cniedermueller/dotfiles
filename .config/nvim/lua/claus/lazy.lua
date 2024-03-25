@@ -59,6 +59,7 @@ require("lazy").setup({
         "simrat39/rust-tools.nvim"
     },
     {
-        "nvim-tree/nvim-tree.lua"
+        "lmburns/lf.nvim",
+        dependencies = { "akinsho/toggleterm.nvim" }
     },
 })
