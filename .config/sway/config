@@ -30,6 +30,7 @@ set $passmenu passmenu | xargs swaymsg exec --
 set $mountmenu mounter -m
 set $unmountmenu mounter -u
 set $work work
+set $otpmenu otpmenu
 
 set $browser firefox
 
@@ -93,6 +94,7 @@ input * {
     bindsym $mod+m exec $mountmenu
     bindsym $mod+Shift+m exec $unmountmenu
     bindsym $mod+h+o exec $work
+    bindsym $mod+o exec $otpmenu
 
     bindsym $mod+w exec $browser
 
