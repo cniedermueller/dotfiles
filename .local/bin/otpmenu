@@ -1,3 +1,3 @@
 #!/bin/sh
-requested=$(ls $PASSWORD_STORE_DIR/otp | cut -f 1 -d . | tofi)
+requested=$(ls $PASSWORD_STORE_DIR/otp | cut -f 1 -d . | bemenu)
 pass otp otp/$requested | wl-copy
