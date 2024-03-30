@@ -22,7 +22,6 @@ stty -ixon
 bindkey -v
 alias ls="ls --color"
 alias ssh="TERM=xterm-256color ssh"
-alias monero="monero-wallet-cli --wallet-file ~/Documents/monero/wallet"
 alias config="/usr/bin/git --git-dir=$HOME/source/dotfiles --work-tree=$HOME"
 alias v=nvim
 
