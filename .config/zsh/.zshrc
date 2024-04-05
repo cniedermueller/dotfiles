@@ -29,11 +29,10 @@ setopt prompt_subst
 autoload -U colors && colors
 source ~/.config/zsh/zsh-theme
 source ~/.config/zsh/git.zsh
+eval "$(fzf --zsh)"
 
 export PATH=$PATH:~/.cargo/bin:~/.local/bin
 export PASSWORD_STORE_DIR=~/.local/share/pass
 export GNUPGHOME=~/.local/share/gnupg
 export BROWSER=firefox
 export EDITOR=nvim
-
-bindkey '^R' history-incremental-search-backward
