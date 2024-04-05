@@ -1,0 +1,8 @@
+cmd delete ${{
+	printf "%s\n" "$fx"
+	printf "delete?[y/N]"
+	read ans
+	[ "$ans" = "y" ] && rm -rf $fx
+}}
+
+map D delete
