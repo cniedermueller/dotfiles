@@ -53,7 +53,7 @@ require("lazy").setup({
     },
     {
         "rcarriga/nvim-dap-ui",
-        dependencies = { "mfussenegger/nvim-dap" }
+        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" }
     },
     {
         "simrat39/rust-tools.nvim"
