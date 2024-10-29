@@ -5,4 +5,11 @@ cmd delete ${{
 	[ "$ans" = "y" ] && rm -rf $fx
 }}
 
+cmd create ${{
+  printf "New file: "
+  read ans
+  touch "$ans"
+}}
+
 map D delete
+map N create
