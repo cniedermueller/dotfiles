@@ -26,7 +26,7 @@ set $term footclient
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu tofi-drun | xargs swaymsg exec --
-set $passmenu passmenu | xargs swaymsg exec --
+set $passmenu passmenu --type
 set $mountmenu mounter -m
 set $unmountmenu mounter -u
 set $work work
