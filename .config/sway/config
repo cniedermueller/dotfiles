@@ -34,6 +34,8 @@ set $otpmenu otpmenu
 
 set $browser firefox
 
+for_window [class="Pinentry-gtk"] floating enable
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
