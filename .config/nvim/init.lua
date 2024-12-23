@@ -1,1 +1,1 @@
-require('claus')
+require('config')
