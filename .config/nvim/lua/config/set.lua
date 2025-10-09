@@ -14,5 +14,3 @@ vim.opt.scrolloff = 8
 vim.opt.clipboard = 'unnamedplus'
 
 vim.cmd [[colorscheme tokyonight]]
-
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
