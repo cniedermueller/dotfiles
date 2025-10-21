@@ -1,10 +1,10 @@
 require("mason").setup()
 require("mason-lspconfig").setup()
 local pid = vim.fn.getpid()
-
+local home = os.getenv("HOME")
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require 'lspconfig'.omnisharp.setup {
-  cmd = { "/root/.local/share/nvim/mason/bin/OmniSharp", "--languageserver", "--hostPID", tostring(pid) },
+  cmd = { home .. "/.local/share/nvim/mason/bin/OmniSharp", "--languageserver", "--hostPID", tostring(pid) },
 }
 
 -- Global mappings.
@@ -41,3 +41,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
   end,
 })
+
+require'lspconfig'.gopls.setup{}

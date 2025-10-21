@@ -63,5 +63,15 @@ require("lazy").setup({
     opts = {},
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
     --dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  },
+  {
+    'vimwiki/vimwiki',
+    init = function() 
+      vim.g.vimwiki_list = {
+        {
+          path = '~/Documents/vimwiki',
+        },
+      }
+    end,
   }
 })
